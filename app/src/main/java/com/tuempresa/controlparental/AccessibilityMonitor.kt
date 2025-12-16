@@ -7,7 +7,6 @@ import android.app.NotificationChannel
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import android.content.Context
-import android.content.Intent
 
 class AccessibilityMonitor : AccessibilityService() {
 
@@ -28,7 +27,10 @@ class AccessibilityMonitor : AccessibilityService() {
             // Notificar al tutor
             sendNotification(packageName)
 
-            // Bloquear si es app restringida
+            // Revisar tiempo de uso y alertar si se excede
+            checkUsageLimit(packageName)
+
+            // Bloquear solo si es app restringida
             if (isBlockedApp(packageName)) {
                 blockApp()
             }
@@ -38,7 +40,6 @@ class AccessibilityMonitor : AccessibilityService() {
     override fun onInterrupt() {}
 
     private fun logApp(packageName: String) {
-        // Aquí guardas en SharedPreferences o DB
         val prefs = getSharedPreferences("monitor", Context.MODE_PRIVATE)
         val editor = prefs.edit()
         editor.putLong(packageName, System.currentTimeMillis())
@@ -70,13 +71,36 @@ class AccessibilityMonitor : AccessibilityService() {
     }
 
     private fun isBlockedApp(packageName: String): Boolean {
-        // Aquí defines las apps bloqueadas (ejemplo: AirplaneGame)
         val blocked = listOf("com.tuempresa.airplanegame")
         return blocked.contains(packageName)
     }
 
     private fun blockApp() {
-        // Cierra la app bloqueada simulando cierre del sistema
         performGlobalAction(GLOBAL_ACTION_HOME)
+    }
+
+    // --- NUEVAS FUNCIONES PARA ALERTAS ---
+    private fun checkUsageLimit(packageName: String) {
+        val prefs = getSharedPreferences("monitor", Context.MODE_PRIVATE)
+        val startTime = prefs.getLong(packageName, System.currentTimeMillis())
+        val elapsed = System.currentTimeMillis() - startTime
+
+        // Ejemplo: alerta si app se usa más de 10 minutos
+        val limitMillis = 10 * 60 * 1000
+        if (elapsed >= limitMillis) {
+            sendUsageAlert(packageName, elapsed)
+        }
+    }
+
+    private fun sendUsageAlert(packageName: String, elapsed: Long) {
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("Control Parental")
+            .setContentText("La app $packageName ha sido usada ${elapsed/60000} minutos")
+            .setSmallIcon(android.R.drawable.ic_lock_lock)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .build()
+
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(packageName.hashCode() + 999, notification)
     }
 }
