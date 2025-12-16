@@ -1,0 +1,49 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tuempresa.controlparental">
+
+    <!-- Permisos -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="Control Parental"
+        android:supportsRtl="true">
+
+        <!-- Receiver para impedir desinstalación -->
+        <receiver
+            android:name=".AdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Servicio de monitoreo persistente -->
+        <service
+            android:name=".MonitorService"
+            android:foregroundServiceType="none" />
+
+        <!-- Servicio de accesibilidad para detectar apps -->
+        <service
+            android:name=".AccessibilityMonitor"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- Panel PIN oculto -->
+        <activity android:name=".PinActivity"
+            android:exported="false">
+        </activity>
+
+    </application>
+</manifest>
