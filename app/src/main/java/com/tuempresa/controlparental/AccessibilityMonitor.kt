@@ -79,13 +79,13 @@ class AccessibilityMonitor : AccessibilityService() {
         performGlobalAction(GLOBAL_ACTION_HOME)
     }
 
-    // --- NUEVAS FUNCIONES PARA ALERTAS ---
+    // --- ALERTAS DE TIEMPO DE USO ---
     private fun checkUsageLimit(packageName: String) {
         val prefs = getSharedPreferences("monitor", Context.MODE_PRIVATE)
         val startTime = prefs.getLong(packageName, System.currentTimeMillis())
         val elapsed = System.currentTimeMillis() - startTime
 
-        // Ejemplo: alerta si app se usa más de 10 minutos
+        // Limite ejemplo: 10 min
         val limitMillis = 10 * 60 * 1000
         if (elapsed >= limitMillis) {
             sendUsageAlert(packageName, elapsed)

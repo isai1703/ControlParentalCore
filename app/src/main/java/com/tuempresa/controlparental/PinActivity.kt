@@ -11,7 +11,7 @@ import android.widget.Toast
 
 class PinActivity : AppCompatActivity() {
 
-    private val PIN_CORRECTO = "1234"
+    private var PIN_CORRECTO = "1234"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
