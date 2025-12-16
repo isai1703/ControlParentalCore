@@ -1,0 +1,10 @@
+R_DEF: Internal format may change without notice
+local
+color purple_200
+id btnAceptar
+id listView
+id pinEditText
+layout activity_pin
+string app_name
+xml accessibility_service_config
+xml device_admin

@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -13,6 +13,12 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
     }
 }
 

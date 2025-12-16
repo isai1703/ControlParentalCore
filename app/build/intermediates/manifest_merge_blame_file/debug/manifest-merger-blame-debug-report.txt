@@ -1,0 +1,128 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tuempresa.controlparental"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+11-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:4:5-77
+11-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:4:22-75
+12    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+12-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:5:5-80
+12-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:5:22-78
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+13-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:6:5-76
+13-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:6:22-74
+14
+15    <permission
+15-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+16        android:name="com.tuempresa.controlparental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.tuempresa.controlparental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:8:5-45:19
+22        android:allowBackup="true"
+22-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:9:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/a2efcb9ffcbefac0ea9cdaed38cce8bb/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:label="Control Parental"
+26-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:10:9-41
+27        android:supportsRtl="true" >
+27-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:11:9-35
+28        <receiver
+28-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:13:9-23:20
+29            android:name="com.tuempresa.controlparental.AdminReceiver"
+29-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:14:13-42
+30            android:exported="true"
+30-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:16:13-36
+31            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+31-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:15:13-70
+32            <meta-data
+32-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:17:13-19:55
+33                android:name="android.app.device_admin"
+33-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:18:17-56
+34                android:resource="@xml/device_admin" />
+34-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:19:17-53
+35
+36            <intent-filter>
+36-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:20:13-22:29
+37                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+37-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:21:17-81
+37-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:21:25-79
+38            </intent-filter>
+39        </receiver>
+40
+41        <service
+41-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:25:9-28:51
+42            android:name="com.tuempresa.controlparental.MonitorService"
+42-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:26:13-43
+43            android:exported="false"
+43-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:27:13-37
+44            android:foregroundServiceType="none" />
+44-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:28:13-49
+45        <service
+45-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:30:9-40:19
+46            android:name="com.tuempresa.controlparental.AccessibilityMonitor"
+46-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:31:13-49
+47            android:exported="false"
+47-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:33:13-37
+48            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+48-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:32:13-79
+49            <intent-filter>
+49-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:34:13-36:29
+50                <action android:name="android.accessibilityservice.AccessibilityService" />
+50-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:35:17-91
+50-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:35:25-89
+51            </intent-filter>
+52
+53            <meta-data
+53-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:37:13-39:71
+54                android:name="android.accessibilityservice"
+54-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:38:17-60
+55                android:resource="@xml/accessibility_service_config" />
+55-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:39:17-69
+56        </service>
+57
+58        <activity
+58-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:42:9-44:39
+59            android:name="com.tuempresa.controlparental.PinActivity"
+59-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:43:13-40
+60            android:exported="false" />
+60-->/data/data/com.termux/files/home/ControlParentalCore/app/src/main/AndroidManifest.xml:44:13-37
+61
+62        <provider
+62-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+63            android:name="androidx.startup.InitializationProvider"
+63-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+64            android:authorities="com.tuempresa.controlparental.androidx-startup"
+64-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+65            android:exported="false" >
+65-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+66            <meta-data
+66-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+67-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+68                android:value="androidx.startup" />
+68-->[androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/9d405e70cd2d0068e2c4a3f1a2b24462/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+69            <meta-data
+69-->[androidx.lifecycle:lifecycle-process:2.4.1] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/bc118832957f75a742802c2c80c4b449/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+70                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+70-->[androidx.lifecycle:lifecycle-process:2.4.1] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/bc118832957f75a742802c2c80c4b449/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+71                android:value="androidx.startup" />
+71-->[androidx.lifecycle:lifecycle-process:2.4.1] /data/data/com.termux/files/home/.gradle/caches/9.2.1/transforms/bc118832957f75a742802c2c80c4b449/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+72        </provider>
+73    </application>
+74
+75</manifest>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.tuempresa.controlparental.app-merged_res-20:/xml_device_admin.xml.flat",
+        "source": "com.tuempresa.controlparental.app-main-22:/xml/device_admin.xml"
+    },
+    {
+        "merged": "com.tuempresa.controlparental.app-merged_res-20:/layout_activity_pin.xml.flat",
+        "source": "com.tuempresa.controlparental.app-main-22:/layout/activity_pin.xml"
+    },
+    {
+        "merged": "com.tuempresa.controlparental.app-merged_res-20:/xml_accessibility_service_config.xml.flat",
+        "source": "com.tuempresa.controlparental.app-main-22:/xml/accessibility_service_config.xml"
+    }
+]

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tuempresa.controlparental"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <permission
+        android:name="com.tuempresa.controlparental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.tuempresa.controlparental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:label="Control Parental"
+        android:supportsRtl="true" >
+        <receiver
+            android:name="com.tuempresa.controlparental.AdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.tuempresa.controlparental.MonitorService"
+            android:exported="false"
+            android:foregroundServiceType="none" />
+        <service
+            android:name="com.tuempresa.controlparental.AccessibilityMonitor"
+            android:exported="false"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <activity
+            android:name="com.tuempresa.controlparental.PinActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.tuempresa.controlparental.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+
+</manifest>
