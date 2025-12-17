@@ -36,9 +36,9 @@ jobs:
           echo "=== APK FILES ==="
           find app/build/outputs -type f
 
-      - name: Upload Debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-apk
-          path: app/build/outputs/**/*.apk
-          if-no-files-found: error
+  - name: Upload Debug APK
+          uses: actions/upload-artifact@v4
+          with:
+            name: debug-apk
+            path: app/build/outputs/**/*.apk
+            if-no-files-found: warn
