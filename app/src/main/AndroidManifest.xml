@@ -10,6 +10,7 @@
         android:label="Control Parental"
         android:supportsRtl="true">
 
+        <!-- Device Admin -->
         <receiver
             android:name=".AdminReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN"
@@ -22,11 +23,13 @@
             </intent-filter>
         </receiver>
 
+        <!-- Servicio persistente -->
         <service
             android:name=".MonitorService"
             android:exported="false"
-            android:foregroundServiceType="none"/>
+            android:foregroundServiceType="dataSync"/>
 
+        <!-- Servicio de accesibilidad -->
         <service
             android:name=".AccessibilityMonitor"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -39,6 +42,7 @@
                 android:resource="@xml/accessibility_service_config"/>
         </service>
 
+        <!-- Panel PIN oculto -->
         <activity
             android:name=".PinActivity"
             android:exported="false"/>
