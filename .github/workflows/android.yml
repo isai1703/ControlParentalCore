@@ -1,4 +1,4 @@
-name: Build & Upload APKs
+name: Build & Upload APK
 
 on:
   push:
@@ -10,43 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Configurar JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      # 3. Dar permisos a gradlew
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # 4. Limpiar proyecto
       - name: Clean project
         run: ./gradlew clean
 
-      # 5. Construir APKs Debug y Release
-      - name: Build APKs
-        run: ./gradlew assembleDebug assembleRelease --stacktrace
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
 
-      # 6. Buscar todos los APKs generados
-      - name: Find all APK files
-        id: find_apks
-        run: |
-          echo "Looking for APK files..."
-          files=$(find app/build/outputs -name "*.apk")
-          echo "Found APK files:"
-          echo "$files"
-          echo "apk_files=$files" >> $GITHUB_ENV
+      - name: List APK files
+        run: find app/build/outputs -type f
 
-      # 7. Subir todos los APKs encontrados
-      - name: Upload APKs
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: apk-artifacts
-          path: ${{ env.apk_files }}
+          name: debug-apk
+          path: app/build/outputs/**/*.apk
           if-no-files-found: error
